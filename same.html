@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Charu ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  color: white;
+  background: linear-gradient(45deg, #ff4e50, #ff758c);
+  padding: 10px;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+#typing {
+  font-size: 16px;
+  margin: 15px;
+  min-height: 60px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.btn {
+  background: linear-gradient(45deg, #ff4e50, #ff758c);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* Video */
+#birthdayVideo {
+  width: 90%;
+  max-width: 500px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+@media(min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  #typing {
+    font-size: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="container">
+
+  <h1>🎉 Happy Birthday Mahi 🎉</h1>
+
+  <div id="typing"></div>
+
+  <!-- VIDEO -->
+  <div id="gallery">
+    <video
+      id="birthdayVideo"
+      src="mahi.mp4"
+      autoplay
+      loop
+      playsinline
+      controls>
+    </video>
+  </div>
+
+  <a href="gift.html" class="btn">Click Me 🎁</a>
+
+</div>
+
+<script>
+
+/* =========================
+   TYPING EFFECT
+========================= */
+
+let text = `Happy Birthday to the girl who somehow became one of the most beautiful parts of my life. ❤️
+
+I don’t know what the future holds for us, but I know one thing — meeting you is a memory I’ll always be grateful for. From our random conversations to the little moments we shared, you’ve made ordinary days feel special. ✨
+
+Today isn’t just the day you were born… it’s the day the world got someone who would one day become so important to me. 🥹❤️
+
+I hope whenever you look back at this birthday, you remember how loved, special, and precious you were to me on this day.
+
+Keep smiling the way you do, keep chasing your dreams, and never forget that somewhere in this huge world, there’s someone who will always be genuinely happy just to see you happy. ❤️
+
+Happy Birthday, my special person. 🎂✨
+May this birthday become a memory you never forget — just like the way I’ll never forget the day you became a part of my life. ❤️`;
+
+let i = 0;
+
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 40);
+  }
+}
+
+typing();
+
+
+/* =========================
+   VIDEO AUTOPLAY + AUDIO
+========================= */
+
+const video = document.getElementById("birthdayVideo");
+
+// Page load par video play karne ki koshish
+window.addEventListener("load", async () => {
+
+  try {
+    // Audio ke saath autoplay try
+    video.muted = false;
+    await video.play();
+
+    console.log("Video autoplay with audio started");
+
+  } catch (error) {
+
+    console.log("Browser ne autoplay with audio block kar diya.");
+
+    // Browser block kare to first user interaction par play
+    document.addEventListener("click", playVideoWithSound, {
+      once: true
+    });
+
+    document.addEventListener("touchstart", playVideoWithSound, {
+      once: true
+    });
+  }
+
+});
+
+
+function playVideoWithSound() {
+
+  video.muted = false;
+
+  video.play()
+    .then(() => {
+      console.log("Video started with sound");
+    })
+    .catch(error => {
+      console.log("Video play error:", error);
+    });
+
+}
+
+
+/* =========================
+   CANVAS
+========================= */
+
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+
+/* =========================
+   FIREWORKS
+========================= */
+
+function drawCircle(x, y) {
+
+  ctx.beginPath();
+
+  ctx.arc(
+    x,
+    y,
+    3,
+    0,
+    Math.PI * 2
+  );
+
+  ctx.fillStyle = "white";
+  ctx.fill();
+}
+
+
+canvas.addEventListener("click", (e) => {
+
+  for (let i = 0; i < 20; i++) {
+
+    drawCircle(
+      e.clientX + Math.random() * 50,
+      e.clientY + Math.random() * 50
+    );
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 🔥 important -->
+<title>Happy Birthday Mahi ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI';
+  text-align: center;
+  color: white;
+  background: linear-gradient(45deg, #ff4e50, #ff758c);
+  padding: 10px;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+/* 🔥 Responsive Heading */
+h1 {
+  font-size: 28px;
+}
+
+/* 🔥 Typing text mobile friendly */
+#typing {
+  font-size: 16px;
+  margin: 15px;
+  min-height: 60px;
+  line-height: 1.5;
+  white-space: pre-line; /* line break support */
+}
+
+.btn {
+  background: linear-gradient(45deg, #ff4e50, #ff758c);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* 🔥 Images responsive */
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#gallery img {
+  width: 90%;
+  max-width: 250px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+/* 🔥 Audio responsive */
+audio {
+  width: 90%;
+  max-width: 300px;
+  margin-top: 20px;
+}
+
+/* 🔥 Tablet/Desktop */
+@media(min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  #typing {
+    font-size: 20px;
+  }
+
+  #gallery img {
+    width: 200px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="container">
+  <h1>🎉 Happy Birthday Charu 🎉</h1>
+
+  <div id="typing"></div>
+
+  <a href="gift.html" class="btn">Click Me 🎁</a>
+
+  <div id="gallery">
+     <video src="mah"></video>
+  </div>
+</div>
+
+<!-- <audio controls autoplay loop>
+  <source src="rangrez.mp3">
+</audio> -->
+
+<script>
+// Typing
+let text = `Charu... tu meri life ka sabse special part hai ❤️ 
+Mujhe aaj bhi yaad hai jab hum pehli baar college bus me mile the…
+tab shayad hume pata bhi nahi tha ki hum itne acche dost ban jayenge ❤️..
+Same class, same moments… aur dheere dheere tu meri life ka ek important part ban gayi 💫..
+Bas aise hi hamesha life me haste rehna… 😊May your day be filled with happiness and lots of smiles 😊
+Wishing you a day full of love, laughter, and amazing memories.Stay happy and keep shining ✨
+May your birthday be as beautiful and special as you are 🌸
+Wishing you endless joy and success in life. Happy Birthday! 🎁`;
+
+let i = 0;
+
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 40);
+  }
+}
+typing();
+
+// Canvas fix for resize
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+// Fireworks
+function drawCircle(x, y) {
+  ctx.beginPath();
+  ctx.arc(x, y, 3, 0, Math.PI * 2);
+  ctx.fillStyle = "white";
+  ctx.fill();
+}
+
+canvas.addEventListener("click", (e) => {
+  for (let i = 0; i < 20; i++) {
+    drawCircle(
+      e.clientX + Math.random()*50,
+      e.clientY + Math.random()*50
+    );
+  }
+});
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

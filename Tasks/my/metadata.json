@@ -1,0 +1,8 @@
+
+{
+  "description": "Charu - Your AI Best Friend with real-time voice interaction.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "name": "Charu AI"
+}

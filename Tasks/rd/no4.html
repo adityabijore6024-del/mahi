@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe5e5;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 500px;
+    margin: 20px;
+  }
+  
+  .container .tenor-gif-embed {
+    max-width: 200px;
+  }
+  
+  .container .btn {
+    display: flex;
+    gap: 25px;
+  }
+  
+  /* .btn a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #111;
+    background: #fff;
+    padding: 10px 25px;
+    border-radius: 8px;
+    box-shadow: 0.5rem 1rem 3rem hsl(0, 0%, 0%, 0.3);
+  } */
+   .btn a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #111;
+    background: #fff;
+    padding: 10px 25px;
+    border-radius: 8px;
+    box-shadow: 0.5rem 1rem 3rem hsl(0, 0%, 0%, 0.3);
+    background-color: #f017b9;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;          
+    display: inline-block;
+    cursor: pointer;
+        }
+
+  </style>
+</head>
+<body>
+    <div class="container">
+<div class="tenor-gif-embed" data-postid="1704945426559831696" data-share-method="host" data-aspect-ratio="1.04184" data-width="100%"><a href="https://tenor.com/view/ami-ar-tomake-valobashi-na-gif-1704945426559831696">Ami Ar Tomake Valobashi Na GIF</a>from <a href="https://tenor.com/search/ami+ar+tomake+valobashi+na-gifs">Ami Ar Tomake Valobashi Na GIFs</a></div> 
+
+
+<div>
+    <h1> ab dekho tum mujhe ghusa dila rahi ho <br> tumhe jo karna h karo 😠😠</h1>
+</div>
+
+
+
+
+<div class="btn">
+  <a href="yes.html"> yes 🩶...</a>
+    <a href="#" id="move-random">No</a>
+</div>
+
+</div>
+</div>
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<script>
+    function moveRandomEl(elm) {
+    elm.style.position = "absolute";
+    elm.style.top = Math.floor(Math.random() * 90 + 5) + "%";
+    elm.style.left = Math.floor(Math.random() * 90 + 5) + "%";
+  }
+  
+  const moveRandom = document.querySelector("#move-random");
+  
+  moveRandom.addEventListener("mouseenter", function (e) {
+    moveRandomEl(e.target);
+  });
+
+ function bb(){
+
+ };
+
+</script>
+</body>
+</html>

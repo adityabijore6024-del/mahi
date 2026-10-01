@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mahi ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  color: white;
+  background: linear-gradient(45deg, #ff4e50, #ff758c);
+  overflow-x: hidden;
+}
+
+/* Canvas background */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  margin-top: 60px;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+/* Mobile responsive */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+#typing {
+  font-size: 16px;
+  margin: 20px;
+  min-height: 60px;
+  white-space: pre-line;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: white;
+  color: #ff4e50;
+  margin-top: 10px;
+}
+
+button a {
+  text-decoration: none;
+  color: #ff4e50;
+  font-weight: bold;
+}
+
+#gallery {
+  margin-top: 20px;
+}
+
+#gallery img {
+  width: 90%;
+  max-width: 250px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+/* Audio hidden (clean look) */
+audio {
+  display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="container">
+  <h1>🎉 Happy Birthday Mahi 🎉</h1>
+
+  <div id="typing"></div>
+
+  <button onclick="goGift()">Click for Surprise 🎁</button>
+
+  <div id="gallery">
+     <img src="am.jpg">
+     <img src="download.jpg">
+  </div>
+</div>
+
+<audio id="music" autoplay loop muted>
+  <source src="rangrez.mp3">
+</audio>
+
+<script>
+// Fix autoplay (mobile ke liye)
+window.addEventListener("click", () => {
+  let music = document.getElementById("music");
+  music.muted = false;
+  music.play();
+});
+
+// Redirect
+function goGift(){
+  window.location.href = "gift.html";
+}
+
+// Typing effect
+let text = `Mahi... tu meri life ka sabse special part hai ❤️  
+Mujhe aaj bhi yaad hai jab hum pehli baar college bus me mile the…  
+tab shayad hume pata bhi nahi tha ki hum itne acche dost ban jayenge ❤️  
+Same class, same moments… aur dheere dheere tu meri life ka ek important part ban gayi 💫  
+Bas aise hi hamesha life me haste rehna… 😊`;
+
+let i = 0;
+
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 35);
+  }
+}
+typing();
+
+// Canvas fireworks
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function drawCircle(x, y) {
+  ctx.beginPath();
+  ctx.arc(x, y, 3, 0, Math.PI * 2);
+  ctx.fillStyle = "white";
+  ctx.fill();
+}
+
+canvas.addEventListener("click", (e) => {
+  for (let i = 0; i < 25; i++) {
+    drawCircle(
+      e.clientX + Math.random()*60,
+      e.clientY + Math.random()*60
+    );
+  }
+});
+</script>
+
+</body>
+</html>
